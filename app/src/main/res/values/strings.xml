@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Таксисту в помощь</string>
+    <string name="url_sink">http://slipquack.ru.s4.hhos.ru/sink</string>
+    <string name="url_kafe">http://slipquack.ru.s4.hhos.ru/kafe</string>
+    <string name="url_game">http://slipquack.ru.s4.hhos.ru/game</string>
+    <string name="url_repair">http://slipquack.ru.s4.hhos.ru/repair</string>
+    <string name="url_service">http://slipquack.ru.s4.hhos.ru/service</string>
+</resources>
