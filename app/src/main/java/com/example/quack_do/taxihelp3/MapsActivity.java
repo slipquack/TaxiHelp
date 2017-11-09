@@ -71,32 +71,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         locationManager = (LocationManager) getSystemService(
                 Context.LOCATION_SERVICE);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+
+            return;
+        }
         locationManager.requestLocationUpdates(
-                LocationManager.GPS_PROVIDER, 10 * 4000, 10, locationListener);
+                LocationManager.GPS_PROVIDER, 10 * 3000, 5, locationListener);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
         location = locationManager.getLastKnownLocation(
                 LocationManager.GPS_PROVIDER);
 
+        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 10 * 3000, 5, locationListener);
+        location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 
-    }
 
-    protected GoogleMap getmMap() { return mMap;}
-
-    private void printLocation(Location location) {
-        if (location != null) {
-            lat = location.getLatitude();
-            lng = location.getLongitude();
-            LatLng position = new LatLng(lat, lng);
-            CameraPosition cameraPosition = new CameraPosition.Builder()
-                    .target(position)
-                    .zoom(18)
-                    .bearing(270)
-                    .tilt(45)
-                    .build();
-            mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition), 3000, null);
-        }
     }
 
     @Override
@@ -120,6 +111,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setMyLocationEnabled(true);
         mMap.getUiSettings().setZoomControlsEnabled(true);
 
+    }
+
+    protected GoogleMap getmMap() { return mMap;}
+
+    private void printLocation(Location location) {
+        if (location != null) {
+            lat = location.getLatitude();
+            lng = location.getLongitude();
+            LatLng position = new LatLng(lat, lng);
+            CameraPosition cameraPosition = new CameraPosition.Builder()
+                    .target(position)
+                    .zoom(18)
+                    .bearing(270)
+                    .tilt(45)
+                    .build();
+            mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition), 3000, null);
+        }
     }
 
     class DownloadGeoJsonFile extends AsyncTask<String, Void, GeoJsonLayer> {
@@ -156,6 +164,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         }
     }
+
     protected DownloadGeoJsonFile retriverFileFromUrl(){
         return new DownloadGeoJsonFile();
     }

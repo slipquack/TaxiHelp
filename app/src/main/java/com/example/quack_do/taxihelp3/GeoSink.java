@@ -1,5 +1,6 @@
 package com.example.quack_do.taxihelp3;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.TextView;
 
@@ -7,6 +8,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.Marker;
+import com.google.maps.android.data.Feature;
 import com.google.maps.android.data.geojson.GeoJsonFeature;
 import com.google.maps.android.data.geojson.GeoJsonLayer;
 import com.google.maps.android.data.geojson.GeoJsonPointStyle;
@@ -40,34 +42,19 @@ public class GeoSink extends MapsActivity {
 
                 final BitmapDescriptor marker = BitmapDescriptorFactory.fromResource(R.mipmap.sink);
                 final GeoJsonPointStyle pointStyle = new GeoJsonPointStyle();
-
                 pointStyle.setIcon(marker);
                 feature.setPointStyle(pointStyle);
 
-                getmMap().setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
-
-                    View view = getLayoutInflater().inflate(R.layout.customwindow, null);
-                    TextView text = (TextView) view.findViewById(R.id.title);
-
-                    TextView text2 = (TextView)view.findViewById(R.id.text2);
-
+                layer.setOnFeatureClickListener(new GeoJsonLayer.GeoJsonOnFeatureClickListener() {
                     @Override
-                    public View getInfoWindow(Marker marker) {
+                    public void onFeatureClick(Feature feature) {
 
-                        return null;
-                    }
-
-                    @Override
-                    public View getInfoContents(Marker marker) {
-                        text.setText(marker.getTitle());
-                        return view;
+                        Intent intent = new Intent(GeoSink. this, Customers.class);
+                        intent.putExtra("label", feature.getProperty("label"));
+                        intent.putExtra("address", feature.getProperty("address"));
+                        intent.putExtra("phone", feature.getProperty("phone"));
                     }
                 });
             }
-
-
     }
-
-
-
 }

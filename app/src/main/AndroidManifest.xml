@@ -56,12 +56,21 @@
             </intent-filter>
         </activity>
         <activity android:name=".GeoRepair"
-            android:label="@string/app_name"/>
+            android:label="@string/app_name">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
         <activity android:name=".GeoService"
             android:label="@string/app_name"/>
         <activity android:name=".RentActivity"
             android:screenOrientation="portrait"
             android:label="@string/app_name"/>
+        <activity android:name=".Customers">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

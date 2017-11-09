@@ -46,43 +46,18 @@ public class GeoKafe extends MapsActivity {
                 pointStyle.setIcon(marker);
                 feature.setPointStyle(pointStyle);
 
-        }
-        layer.setOnFeatureClickListener(new GeoJsonLayer.GeoJsonOnFeatureClickListener() {
-            @Override
-            public void onFeatureClick(final Feature feature) {
-                Toast.makeText(GeoKafe.this,
-                        "Feature clicked: " + feature.getProperty("address"),
-                        Toast.LENGTH_SHORT).show();
-                getmMap().setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
-
+                layer.setOnFeatureClickListener(new GeoJsonLayer.GeoJsonOnFeatureClickListener() {
                     @Override
-                    public View getInfoWindow(Marker marker) {
+                    public void onFeatureClick(Feature feature) {
 
-                        return null;
-
+                        Intent intent = new Intent(GeoKafe. this, Customers.class);
+                        intent.putExtra("label", feature.getProperty("label"));
+                        intent.putExtra("address", feature.getProperty("address"));
+                        intent.putExtra("phone", feature.getProperty("phone"));
+                        startActivity(intent);
                     }
-
-                    @Override
-                    public View getInfoContents(Marker marker) {
-
-                        View infoView = getLayoutInflater().inflate(R.layout.info_window, null);
-
-                        TextView label = (TextView) infoView.findViewById(R.id.label);
-                        label.setText(feature.getProperty("label"));
-                        TextView address = (TextView) infoView.findViewById(R.id.address);
-                        address.setText(feature.getProperty("address"));
-                        TextView phone = (TextView) infoView.findViewById(R.id.phone);
-                        phone.setText(feature.getProperty("phone"));
-
-                        return infoView;
-                    }
-
                 });
-
-            }
-
-        });
-
+        }
 
     }
 
