@@ -50,6 +50,7 @@ public class GeoService extends MapsActivity {
                         intent.putExtra("label", feature.getProperty("label"));
                         intent.putExtra("address", feature.getProperty("address"));
                         intent.putExtra("phone", feature.getProperty("phone"));
+                        intent.putExtra("img", feature.getProperty("img"));
                         startActivity(intent);
                     }
                 });

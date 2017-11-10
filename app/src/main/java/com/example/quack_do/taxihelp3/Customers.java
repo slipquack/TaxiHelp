@@ -1,11 +1,30 @@
 package com.example.quack_do.taxihelp3;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Scanner;
+
+import static android.net.Uri.parse;
 
 
 /**
@@ -15,6 +34,7 @@ import android.widget.TextView;
 public class Customers extends Activity{
 
 
+    String phone;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,9 +54,43 @@ public class Customers extends Activity{
         Button textPhone = (this).findViewById(R.id.phone);
         String phone = extras.getString("phone");
         textPhone.setText(phone);
-        /****Uri number = Uri.parse("tel:" + phone);
-        Intent tel = new Intent(Intent.ACTION_DIAL, number);
-        startActivity(tel);
-         ****/
+
+        String img = extras.getString("img");
+        new DownloadImageTask((ImageView) findViewById(R.id.image))
+                .execute(img);
+
+
+    }
+    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+        ImageView bmImage;
+
+        public DownloadImageTask(ImageView bmImage) {
+            this.bmImage = bmImage;
+        }
+
+        protected Bitmap doInBackground(String... urls) {
+            String urldisplay = urls[0];
+            Bitmap mIcon11 = null;
+            try {
+                InputStream in = new java.net.URL(urldisplay).openStream();
+                mIcon11 = BitmapFactory.decodeStream(in);
+            } catch (Exception e) {
+                Log.e("Error", e.getMessage());
+                e.printStackTrace();
+            }
+            return mIcon11;
+        }
+
+        protected void onPostExecute(Bitmap result) {
+            bmImage.setImageBitmap(result);
+        }
+    }
+
+    public void onClick(View view) {
+        Bundle extras = getIntent().getExtras();
+        String phone = extras.getString("phone");
+        Uri number = Uri.parse("tel:" + phone);
+        Intent intent = new Intent(Intent.ACTION_DIAL, number);
+        startActivity(intent);
     }
 }
