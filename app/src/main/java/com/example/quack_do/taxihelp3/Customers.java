@@ -34,7 +34,7 @@ import static android.net.Uri.parse;
 public class Customers extends Activity{
 
 
-    String phone;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +50,12 @@ public class Customers extends Activity{
         TextView textAddress = (this).findViewById(R.id.address);
         String address = extras.getString("address");
         textAddress.setText(address);
+
+        TextView textDescription = (this).findViewById(R.id.description);
+        String description  = extras.getString("text");
+        textDescription.setText(description);
+
+        Button nameSite = (this).findViewById(R.id.site);
 
         Button textPhone = (this).findViewById(R.id.phone);
         String phone = extras.getString("phone");
@@ -91,6 +97,14 @@ public class Customers extends Activity{
         String phone = extras.getString("phone");
         Uri number = Uri.parse("tel:" + phone);
         Intent intent = new Intent(Intent.ACTION_DIAL, number);
+        startActivity(intent);
+    }
+
+    public  void goToSite(View view) {
+        Bundle extras = getIntent().getExtras();
+        String nameSite = extras.getString("site");
+        Uri name = Uri.parse("http:" + nameSite);
+        Intent intent = new Intent(Intent.ACTION_VIEW, name);
         startActivity(intent);
     }
 }

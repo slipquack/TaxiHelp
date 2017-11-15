@@ -1,0 +1,18 @@
+{"type":"FeatureCollection",
+  "features":[
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[30.334007, 59.903292]},"properties":
+    {"label":"Лолита","address":"ул.Лолиты д.1","img":"http://slipqufe.beget.tech/assets/customers/kafe/img/1.png","phone":"89111120966",
+      "text":"Краткое описание","site":"http://slipqufe.beget.tech/assets/site/index.html"}},
+
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[30.334007, 59.920292]},"properties":
+    {"label":"Розмари","address":"ул.Розмари д.1","img":"http://slipqufe.beget.tech/assets/customers/kafe/img/2.png","phone":"89111120966",
+      "text":"Краткое описание","site":"http://slipqufe.beget.tech/assets/site/index.html"}},
+
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[30.334007, 59.937292]},"properties":
+    {"label":"Эдем","address":"ул.Эдем д.1","img":"http://slipqufe.beget.tech/assets/customers/kafe/img/3.png","phone":"89111120966",
+      "text":"Краткое описание","site":"http://slipqufe.beget.tech/assets/site/index.html"}},
+
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[30.334007, 59.954292]},"properties":
+    {"label":"Азалия","address":"ул.Азалия д.1","img":"http://slipqufe.beget.tech/assets/customers/kafe/img/4.png","phone":"89111120966",
+      "text":"Краткое описание","site":"http://slipqufe.beget.tech/assets/site/index.html"}}
+  ]}

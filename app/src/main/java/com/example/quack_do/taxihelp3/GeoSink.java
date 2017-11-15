@@ -54,6 +54,8 @@ public class GeoSink extends MapsActivity {
                         intent.putExtra("address", feature.getProperty("address"));
                         intent.putExtra("phone", feature.getProperty("phone"));
                         intent.putExtra("img", feature.getProperty("img"));
+                        intent.putExtra("text", feature.getProperty("text"));
+                        intent.putExtra("site", feature.getProperty("site"));
                         startActivity(intent);
                     }
                 });
