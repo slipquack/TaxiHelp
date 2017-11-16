@@ -1,6 +1,6 @@
 package com.example.quack_do.taxihelp3;
 
-import android.annotation.SuppressLint;
+import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -11,29 +11,18 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.google.android.gms.maps.model.BitmapDescriptor;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-
-import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Scanner;
-
-import static android.net.Uri.parse;
 
 
 /**
  * Created by Quack-Do on 07.11.2017.
  */
 
-public class Customers extends Activity{
+public class Customers extends MainActivity{
 
-
+    Button nameSite;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -56,10 +45,12 @@ public class Customers extends Activity{
         textDescription.setText(description);
 
         Button nameSite = (this).findViewById(R.id.site);
+        ObjectAnimator.ofFloat(nameSite, View.SCALE_Y, 0, 1).setDuration(1000).start();
 
         Button textPhone = (this).findViewById(R.id.phone);
         String phone = extras.getString("phone");
         textPhone.setText(phone);
+        ObjectAnimator.ofFloat(textPhone, View.SCALE_Y, 0, 1).setDuration(1000).start();
 
         String img = extras.getString("img");
         new DownloadImageTask((ImageView) findViewById(R.id.image))
@@ -67,6 +58,7 @@ public class Customers extends Activity{
 
 
     }
+
     private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
         ImageView bmImage;
 
@@ -98,6 +90,7 @@ public class Customers extends Activity{
         Uri number = Uri.parse("tel:" + phone);
         Intent intent = new Intent(Intent.ACTION_DIAL, number);
         startActivity(intent);
+        clickButton(view);
     }
 
     public  void goToSite(View view) {
@@ -106,5 +99,7 @@ public class Customers extends Activity{
         Uri name = Uri.parse("http:" + nameSite);
         Intent intent = new Intent(Intent.ACTION_VIEW, name);
         startActivity(intent);
+        clickButton(view);
     }
+
 }
