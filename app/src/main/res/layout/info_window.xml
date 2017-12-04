@@ -19,6 +19,7 @@ android:id="@+id/infoView"
         android:textColor="#fff"
         android:textStyle="bold"
         android:layout_gravity="center"
+        android:layout_marginTop="10dp"
         android:id="@+id/label"/>
 
     <TextView
@@ -29,7 +30,7 @@ android:id="@+id/infoView"
         android:textStyle="italic"
         android:layout_below="@id/label"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:id="@+id/address"/>
 
     <ImageView
@@ -43,7 +44,7 @@ android:id="@+id/infoView"
         android:layout_width="wrap_content"
         android:textColor="#fff"
         android:layout_height="wrap_content"
-        android:textSize="18dp"
+        android:textSize="14dp"
         android:id="@+id/description"
         android:layout_below="@id/image"/>
 

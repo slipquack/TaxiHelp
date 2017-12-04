@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/main"
+    android:weightSum="100"
     android:background="@mipmap/taxi_vertikal">
 
     <TextView
@@ -12,9 +13,12 @@
         android:layout_height="wrap_content"
         android:text="Таксисту в помощь"
         android:textColor="#ffff"
+        android:id="@+id/text_view"
         android:textSize="30dp"
-        android:layout_centerHorizontal="true"
-         />
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"/>
+
+
 
     <ImageButton
         android:id="@+id/kafe"
@@ -23,7 +27,9 @@
         android:background="@mipmap/kafe"
         android:onClick="button_kafe"
         android:src="@drawable/button_stroke"
-        android:layout_centerInParent="true"/>
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"/>
 
     <ImageButton
         android:id="@+id/repair"
@@ -32,11 +38,9 @@
         android:background="@mipmap/repair"
         android:onClick="button_repair"
         android:src="@drawable/button_stroke"
-        android:layout_alignTop="@+id/kafe"
-        android:layout_toRightOf="@+id/kafe"
-        android:layout_toEndOf="@+id/kafe"
-        android:layout_marginLeft="22dp"
-        android:layout_marginStart="22dp" />
+        android:layout_marginBottom="40dp"
+        android:layout_toLeftOf="@id/kafe"
+        android:layout_alignBottom="@id/kafe"/>
 
     <ImageButton
         android:layout_width="72dp"
@@ -45,11 +49,9 @@
         android:src="@drawable/button_stroke"
         android:onClick="button_game"
         android:background="@mipmap/game"
-        android:layout_alignTop="@+id/kafe"
-        android:layout_toLeftOf="@+id/kafe"
-        android:layout_toStartOf="@+id/kafe"
-        android:layout_marginRight="22dp"
-        android:layout_marginEnd="22dp" />
+        android:layout_toRightOf="@id/kafe"
+        android:layout_alignBottom="@id/kafe"
+        android:layout_marginBottom="40dp"/>
 
     <ImageButton
         android:layout_width="72dp"
@@ -58,10 +60,9 @@
         android:onClick="button_sink"
         android:src="@drawable/button_stroke"
         android:background="@mipmap/sink"
-        android:layout_alignLeft="@id/game"
-        android:layout_alignStart="@id/game"
-        android:layout_below="@id/game"
-        android:layout_marginTop="16dp"/>
+        android:layout_above="@id/repair"
+        android:layout_marginBottom="10dp"
+        android:layout_alignRight="@id/repair" />
 
     <ImageButton
         android:layout_width="72dp"
@@ -70,12 +71,9 @@
         android:onClick="button_service"
         android:src="@drawable/button_stroke"
         android:background="@mipmap/service"
-        android:layout_below="@id/repair"
-        android:layout_alignStart="@id/repair"
-        android:layout_marginEnd="22dp"
-        android:layout_marginRight="22dp"
-        android:layout_alignLeft="@id/repair"
-        android:layout_marginTop="16dp"/>
+        android:layout_above="@id/game"
+        android:layout_marginBottom="10dp"
+        android:layout_alignRight="@id/game"/>
 
     <ImageButton
         android:layout_width="72dp"
@@ -84,9 +82,8 @@
         android:onClick="button_rent"
         android:background="@mipmap/rent"
         android:src="@drawable/button_stroke"
-        android:layout_alignStart="@id/kafe"
-        android:layout_alignLeft="@id/kafe"
-        android:layout_below="@id/kafe"
-        android:layout_marginTop="32dp"/>
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/kafe"
+        android:layout_marginBottom="85dp"/>
 
 </RelativeLayout>
