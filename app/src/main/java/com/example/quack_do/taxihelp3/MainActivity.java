@@ -7,12 +7,14 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
+import com.google.maps.android.data.geojson.GeoJsonFeature;
+import com.google.maps.android.data.geojson.GeoJsonLayer;
+
 /**
  * Created by Quack-Do on 01.10.2017.
  */
 
 public class MainActivity extends Activity {
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,14 +63,14 @@ public class MainActivity extends Activity {
     }
 
     public void button_rent(View view) {
-        Intent intent = new Intent(this, RentActivity.class);
-        startActivity(intent);
-        clickButton(view);
+            Intent intent = new Intent(this, RentActivity.class);
+            intent.putExtra("text", "text");
+            startActivity(intent);
+            clickButton(view);
     }
 
     public void clickButton(View v) {
         Animation anim = AnimationUtils.loadAnimation(this, R.anim.button_click);
         v.startAnimation(anim);
     }
-
 }

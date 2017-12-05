@@ -33,7 +33,7 @@ public class GeoService extends MapsActivity {
 
     protected void addToMarker(GeoJsonLayer layer) {
 
-        for (final GeoJsonFeature feature : layer.getFeatures())
+        for (GeoJsonFeature feature : layer.getFeatures())
 
             if ((feature.getProperty("address") != null) && feature.hasProperty("phone")) {
 

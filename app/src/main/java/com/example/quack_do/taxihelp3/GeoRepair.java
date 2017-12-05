@@ -1,6 +1,7 @@
 package com.example.quack_do.taxihelp3;
 
 import android.content.Intent;
+import android.os.Bundle;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.BitmapDescriptor;
@@ -30,8 +31,7 @@ public class GeoRepair extends MapsActivity{
 
     protected void addToMarker(GeoJsonLayer layer) {
 
-        for (final GeoJsonFeature feature : layer.getFeatures()) {
-
+        for (GeoJsonFeature feature : layer.getFeatures()) {
             GeoJsonPointStyle pointStyle = new GeoJsonPointStyle();
             BitmapDescriptor marker = BitmapDescriptorFactory.fromResource(R.mipmap.repair);
             pointStyle.setIcon(marker);
@@ -42,18 +42,18 @@ public class GeoRepair extends MapsActivity{
                 @Override
                 public void onFeatureClick(Feature feature) {
 
-                    Intent intent = new Intent(GeoRepair. this, Customers.class);
-                    intent.putExtra("label",feature.getProperty("label"));
+                    Intent intent = new Intent(GeoRepair.this, Customers.class);
+                    intent.putExtra("label", feature.getProperty("label"));
                     intent.putExtra("address", feature.getProperty("address"));
-                    intent.putExtra("phone",feature.getProperty("phone"));
+                    intent.putExtra("phone", feature.getProperty("phone"));
                     intent.putExtra("img", feature.getProperty("img"));
                     intent.putExtra("text", feature.getProperty("text"));
                     intent.putExtra("site", feature.getProperty("site"));
                     startActivity(intent);
                 }
-            });
-            }
 
+            });
+        }
     }
 
 }

@@ -35,13 +35,13 @@ public class GeoSink extends MapsActivity {
     }
 
 
-    protected void addToMarker(final GeoJsonLayer layer) {
+    protected void addToMarker(GeoJsonLayer layer) {
 
-        for (final GeoJsonFeature feature : layer.getFeatures())
+        for (GeoJsonFeature feature : layer.getFeatures())
             if ((feature.getProperty("address") != null) && feature.hasProperty("phone")) {
 
-                final BitmapDescriptor marker = BitmapDescriptorFactory.fromResource(R.mipmap.sink);
-                final GeoJsonPointStyle pointStyle = new GeoJsonPointStyle();
+                BitmapDescriptor marker = BitmapDescriptorFactory.fromResource(R.mipmap.sink);
+                GeoJsonPointStyle pointStyle = new GeoJsonPointStyle();
                 pointStyle.setIcon(marker);
                 feature.setPointStyle(pointStyle);
 
