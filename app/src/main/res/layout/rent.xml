@@ -5,10 +5,44 @@
     android:background="@mipmap/rent_vertical">
 
     <WebView
+        android:id="@+id/webview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/webview">
+        android:layout_weight="1">
 
     </WebView>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+        <ImageButton
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:id="@+id/kafe"
+            android:src="@mipmap/kafe"
+            android:layout_toRightOf="@id/service"
+            android:onClick="button_kafe"/>
+        <ImageButton
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:id="@+id/service"
+            android:src="@mipmap/service"
+            android:layout_toRightOf="@id/sink"
+            android:onClick="button_service"/>
+        <ImageButton
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:id="@+id/sink"
+            android:src="@mipmap/sink"
+            android:layout_toRightOf="@id/repair"
+            android:onClick="button_sink"/>
+        <ImageButton
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:id="@+id/repair"
+            android:src="@mipmap/repair"
+            android:onClick="button_repair"/>
+    </RelativeLayout>
 
 </LinearLayout>

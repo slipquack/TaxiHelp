@@ -2,6 +2,8 @@ package com.example.quack_do.taxihelp3;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -26,7 +28,8 @@ public class RentActivity extends MainActivity {
         mWebView = (WebView) findViewById(R.id.webview);
         mWebView.getSettings().setJavaScriptEnabled(true);
         mWebView.loadUrl("http://slipqufe.beget.tech/assets/rent/index.html");
-        mWebView.setWebViewClient(new MyWebViewClient());
+        //mWebView.setWebViewClient(new MyWebViewClient());
+        mWebView.setWebViewClient(new InternalWebViewClient());
 
     }
     private class MyWebViewClient extends WebViewClient {
@@ -34,6 +37,19 @@ public class RentActivity extends MainActivity {
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
             view.loadUrl(url);
             return true;
+        }
+    }
+    //если "тел:" набирает номер иначе загрузка главной страницы сайта
+    private class InternalWebViewClient extends WebViewClient {
+        @Override
+        public  boolean shouldOverrideUrlLoading(WebView view, String url) {
+            if (url.indexOf("tel:") > -1) {
+                startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse(url)));
+                return true;
+            } else {
+                view.loadUrl(url);
+                return true;
+            }
         }
     }
     @Override
@@ -44,4 +60,5 @@ public class RentActivity extends MainActivity {
             super.onBackPressed();
         }
     }
+
 }
