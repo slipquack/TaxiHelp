@@ -28,8 +28,8 @@ public class RentActivity extends MainActivity {
         mWebView = (WebView) findViewById(R.id.webview);
         mWebView.getSettings().setJavaScriptEnabled(true);
         mWebView.loadUrl("http://slipqufe.beget.tech/assets/rent/index.html");
-        //mWebView.setWebViewClient(new MyWebViewClient());
-        mWebView.setWebViewClient(new InternalWebViewClient());
+        mWebView.setWebViewClient(new MyWebViewClient());
+        //mWebView.setWebViewClient(new InternalWebViewClient());
 
     }
     private class MyWebViewClient extends WebViewClient {
@@ -43,7 +43,7 @@ public class RentActivity extends MainActivity {
     private class InternalWebViewClient extends WebViewClient {
         @Override
         public  boolean shouldOverrideUrlLoading(WebView view, String url) {
-            if (url.indexOf("tel:") > -1) {
+            if (url.indexOf("tel:") > 0) {
                 startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse(url)));
                 return true;
             } else {

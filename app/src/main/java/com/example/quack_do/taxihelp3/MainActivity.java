@@ -38,14 +38,6 @@ public class MainActivity extends Activity {
         clickButton(view);
     }
 
-    public void button_game(View view) {
-        Intent intent = new Intent(this, GeoGame.class);
-        int type = 3;
-        intent.putExtra("Type", type);
-        startActivity(intent);
-        clickButton(view);
-    }
-
     public void button_sink(View view) {
         Intent intent = new Intent(this, GeoSink.class);
         int type = 4;

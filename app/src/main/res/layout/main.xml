@@ -18,63 +18,6 @@
         android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"/>
 
-
-
-    <ImageButton
-        android:id="@+id/kafe"
-        android:layout_width="72dp"
-        android:layout_height="72dp"
-        android:background="@mipmap/kafe"
-        android:onClick="button_kafe"
-        android:src="@drawable/button_stroke"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="30dp"/>
-
-    <ImageButton
-        android:id="@+id/repair"
-        android:layout_width="72dp"
-        android:layout_height="72dp"
-        android:background="@mipmap/repair"
-        android:onClick="button_repair"
-        android:src="@drawable/button_stroke"
-        android:layout_marginBottom="40dp"
-        android:layout_toLeftOf="@id/kafe"
-        android:layout_alignBottom="@id/kafe"/>
-
-    <ImageButton
-        android:layout_width="72dp"
-        android:layout_height="72dp"
-        android:id="@+id/game"
-        android:src="@drawable/button_stroke"
-        android:onClick="button_game"
-        android:background="@mipmap/game"
-        android:layout_toRightOf="@id/kafe"
-        android:layout_alignBottom="@id/kafe"
-        android:layout_marginBottom="40dp"/>
-
-    <ImageButton
-        android:layout_width="72dp"
-        android:layout_height="72dp"
-        android:id="@+id/sink"
-        android:onClick="button_sink"
-        android:src="@drawable/button_stroke"
-        android:background="@mipmap/sink"
-        android:layout_above="@id/repair"
-        android:layout_marginBottom="10dp"
-        android:layout_alignRight="@id/repair" />
-
-    <ImageButton
-        android:layout_width="72dp"
-        android:layout_height="72dp"
-        android:id="@+id/service"
-        android:onClick="button_service"
-        android:src="@drawable/button_stroke"
-        android:background="@mipmap/service"
-        android:layout_above="@id/game"
-        android:layout_marginBottom="10dp"
-        android:layout_alignRight="@id/game"/>
-
     <ImageButton
         android:layout_width="72dp"
         android:layout_height="72dp"
@@ -83,7 +26,53 @@
         android:background="@mipmap/rent"
         android:src="@drawable/button_stroke"
         android:layout_centerHorizontal="true"
-        android:layout_above="@id/kafe"
-        android:layout_marginBottom="85dp"/>
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"/>
+
+    <ImageButton
+        android:id="@+id/kafe"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:background="@mipmap/kafe"
+        android:onClick="button_kafe"
+        android:src="@drawable/button_stroke"
+        android:layout_toRightOf="@id/rent"
+        android:layout_above="@id/rent"
+        android:layout_marginLeft="-25dp"
+        android:layout_marginBottom="15dp"/>
+
+    <ImageButton
+        android:id="@+id/repair"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:background="@mipmap/repair"
+        android:onClick="button_repair"
+        android:src="@drawable/button_stroke"
+        android:layout_below="@id/kafe"
+        android:layout_toRightOf="@id/kafe"
+        android:layout_marginLeft="-25dp"/>
+
+    <ImageButton
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:id="@+id/sink"
+        android:onClick="button_sink"
+        android:src="@drawable/button_stroke"
+        android:background="@mipmap/sink"
+        android:layout_toLeftOf="@id/rent"
+        android:layout_above="@id/rent"
+        android:layout_marginRight="-25dp"
+        android:layout_marginBottom="15dp"/>
+
+    <ImageButton
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:id="@+id/service"
+        android:onClick="button_service"
+        android:src="@drawable/button_stroke"
+        android:background="@mipmap/service"
+        android:layout_toLeftOf="@id/sink"
+        android:layout_below="@id/sink"
+        android:layout_marginRight="-25dp"/>
 
 </RelativeLayout>
